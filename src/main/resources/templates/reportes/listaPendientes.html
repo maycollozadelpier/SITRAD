@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="/fragments/header :: header">
+</head>
+
+<body class="nav-md">
+	<div class="container body">
+		<div class="main_container">
+			<div th:insert="/fragments/natLeft :: left-nav"></div>
+			<!-- 			<div th:replace="/layout/layout :: left-nav"></div> -->
+			<div th:insert="/fragments/topNav :: top-nav"></div>
+
+			<!-- page content -->
+			<div class="right_col" role="main">
+				<div class="">
+
+					<div class="clearfix"></div>
+
+					<div class="row">
+
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="x_panel">
+								<div class="x_title">
+									<h2>DOCUMENTOS PENDIENTES DE TODAS LAS DEPENDENCIAS</h2>
+
+
+									<ul class="nav navbar-right panel_toolbox">
+										<li><a class="collapse-link"><i
+												class="fa fa-chevron-up"></i></a></li>
+										<li><a class="close-link"><i class="fa fa-close"></i></a>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content">
+									<!-- 									<table id="datatable-buttons" class="table table-striped table-bordered "> -->
+									<table id="" class="table table-striped table-bordered display"
+										style="width: 100%">
+										<!-- 										<div class='col-sm-2'> -->
+										<!-- 											<a class="btn btn-primary btn-xs float-right" -->
+										<!-- 												th:href="@{/documents/repo-recibidos/ (format=pdf)}"><i class="fa fa-file-pdf-o"></i>  EXPORTAR -->
+										<!-- 												A PDF</a> -->
+										<!-- 										</div> -->
+										<!-- 										<div class='col-sm-2'> -->
+										<!-- 											<a class="btn btn-primary btn-xs float-right" -->
+										<!-- 												th:href="@{/documents/repo-recibidos/ (format=pdf)}"><i class="fa fa-file-excel-o"></i>  EXPORTAR -->
+										<!-- 												A EXCEL</a> -->
+										<!-- 										</div> -->
+										<thead>
+											<tr style="align-content: center; font-size: x-small;">
+
+												<th>Nro. Doc.</th>
+												<th>tipo</th>
+												<th>Clasificacion.</th>
+												<th>Estado</th>
+												<th>Asunto</th>
+												<th>Fech. Doc.</th>
+												<th>Fech. Registro</th>
+												<th>Remitente</th>
+												<th>Ver</th>
+												<th>Responsable</th>
+												<th>Asunto</th>
+												<th>ver</th>
+											</tr>
+										</thead>
+
+
+										<tbody>
+											<tr th:each="pen : ${pendientes}" style="font-size: x-small;">
+
+												<td th:text="${pen.numDoc}"></td>
+												<td th:text="${pen.acronimoTipoDoc}"></td>
+												<td th:text="${pen.acronimoClasificacion}"></td>
+												<td th:text="${pen.acronimoEstado}"></td>
+												<td th:text="${pen.asunto}"></td>
+												<td th:text="${pen.fechaDoc}"></td>
+												<td th:text="${pen.fechaRecepcionDoc}"></td>
+												<td th:text="${pen.unidadRemitente}">SJAO</td>
+												<td>
+													<button type="button" class="btn btn-success"
+														role="menuitem" tabindex="-1" data-toggle="modal"
+														data-target=".bs-example-modal-sm"
+														th:onclick="ver([[(${pen.documentoId})]])">
+														<span class="glyphicon glyphicon-folder-open"></span>
+													</button>
+
+												</td>
+												<td th:text="${pen.unidadResponsable}"></td>
+
+												<td><span th:each="res : ${respondido}"
+													th:if="${  pen.numDoc  == res.documentoReferencia}"
+													th:text=${res.asunto}></span></td>
+												
+												
+												
+												<td>													
+													<button  type="button"  th:each="res : ${respondido}"
+													th:if="${  pen.numDoc  == res.documentoReferencia}"
+													class="btn btn-success"
+														role="menuitem" tabindex="-1" data-toggle="modal"
+														data-target=".bs-example-modal-sm"
+														th:onclick="ver([[(${res.documentoId})]])"  >
+														<span class="glyphicon glyphicon-folder-open"></span>
+														</button>
+													
+													</td>
+												
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="x_panel">
+								<div class="x_title">
+									<h2>COPIA INFORMATIVA DE DOCUMENTOS</h2>
+									<ul class="nav navbar-right panel_toolbox">
+										<li><a class="collapse-link"><i
+												class="fa fa-chevron-up"></i></a></li>
+										<li><a class="close-link"><i class="fa fa-close"></i></a>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content">
+
+									<!-- 									<table id="datatable" class="table table-striped table-bordered"> -->
+									<table id=""
+										class="table table-striped table-bordered  nowrap display"
+										cellspacing="0" width="100%">
+										<thead>
+											<tr>
+												<!-- 												<th>Accion.</th> -->
+												<th>Nro. Doc.</th>
+												<th>Prioridad.</th>
+												<th>Decreto</th>
+												<th>Comentario</th>
+												<th>Responsable</th>
+											</tr>
+										</thead>
+
+
+										<tbody id="tablaCopiaInformativa">
+										</tbody>
+									</table>
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- inicio del modal -->
+							<div class="modal fade bs-example-modal-sm" tabindex="-1"
+								role="dialog" aria-hidden="true">
+								<div class="modal-dialog modal-lg">
+									<div class="modal-content">
+
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">X</span>
+											</button>
+											<h4 class="modal-title" id="myModalLabel2">VISTA DEL
+												DOCUMENTO</h4>
+											<h1 th:text="${namefile}"></h1>
+										</div>
+										<div class="embed-responsive embed-responsive-16by9"
+											style="height: 720px">
+											<iframe class="embed-responsive-item"
+												title="W3Schools Free Online Web Tutorials" width="100%"
+												height="100%" id="filecontent"></iframe>
+											<h1 th:text="${namefile}"></h1>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-danger"
+												data-dismiss="modal">Cerrar</button>
+										</div>
+
+									</div>
+								</div>
+							</div>
+							<!--fin del modal -->
+
+			<!-- /page content -->
+			<div th:insert="/fragments/footer :: footer"></div>
+			
+
+		</div>
+	</div>
+
+	<div th:insert="/fragments/jQuery :: jQuery"></div>
+	<!-- 	<script src="/assets/ajax/cargarselect.js"></script> -->
+	<script type="text/javascript">
+		$(document).ready(
+				function() {
+					var table = $('#example').DataTable({
+						lengthChange : false,
+						buttons : [ 'copy', 'excel', 'pdf', 'colvis' ]
+					});
+
+					table.buttons().container().appendTo(
+							'#example_wrapper .col-md-6:eq(0)');
+				});
+	</script>
+
+	<script src="../assets/ajax/listaCopiaInformativa.js"></script>
+	<script src="../assets/ajax/decretoDocumento.js"></script>
+</body>
+</html>

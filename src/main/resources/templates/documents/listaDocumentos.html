@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="/fragments/header :: header">
+</head>
+
+<body class="nav-md">
+	<div class="container body">
+		<div class="main_container">
+			<div th:insert="/fragments/natLeft :: left-nav"></div>
+			<!-- 			<div th:replace="/layout/layout :: left-nav"></div> -->
+			<div th:insert="/fragments/topNav :: top-nav"></div>
+
+			<!-- page content -->
+			<div class="right_col" role="main">
+				<div class="">
+
+					<div class="clearfix"></div>
+
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="x_panel">
+									<div class="x_title">
+
+										<h2>DOCUMENTOS PENDIENTES</h2>
+										<ul class="nav navbar-right panel_toolbox">
+											<li><a class="collapse-link"><i
+													class="fa fa-chevron-up"></i></a></li>
+											<li><a class="close-link"><i class="fa fa-close"></i></a>
+											</li>
+										</ul>
+										<div class="clearfix"></div>
+									</div>
+									<div class="x_content">
+
+										<!-- 									<table id="datatable" class="table table-striped table-bordered"> -->
+										<table id=""
+											class="table table-striped table-bordered  nowrap display"
+											cellspacing="0" width="100%">
+											<thead>
+												<tr>
+													<th>Tipo Doc.</th>
+													<th>Nro. Doc.</th>
+													<th>Fecha Doc.</th>
+													<th>Remitente</th>
+													<th>Accion</th>
+												</tr>
+											</thead>
+
+
+											<tbody>
+												<tr th:each="lista : ${listadocumentos}">
+													<td th:text="${lista.acronimoTipoDoc}">OFICIO</td>
+													<td th:text="${lista.numDoc}">2201</td>
+													<td th:text="${lista.fechaDoc}">13/05/2021</td>
+													<td th:text="${lista.unidadRemitente}">DETEL</td>
+													<!-- 												<td th:text="${lista.acronimoClasificacion}">CONFIDENCIAL</td> -->
+													<!-- 												<th><a th:href="@{/documents/decreto?id=} + ${lista.documentoId}" class="btn btn-success">Decretar</a></th> -->
+													<td role="presentation" class="dropdown"><a id="drop4"
+														href="#" class="btn btn-success dropdown-toggle btn-xs"
+														data-toggle="dropdown" aria-haspopup="true" role="button"
+														aria-expanded="false"> Documents <span class="caret"></span>
+													</a>
+														<ul id="menu6" class="dropdown-menu animated fadeInDown"
+															role="menu">
+															<li role="presentation"><a role="menuitem"
+																tabindex="-1" data-toggle="modal"
+																data-target=".bs-example-modal-sm"
+																th:onclick="ver([[(${lista.documentoId})]])">VER</a></li>
+															<li role="presentation"><a role="menuitem"
+																tabindex="-1"
+																th:href="@{/documents/remitidos?id=} + ${lista.documentoId}">RESPONDER</a></li>
+															<li role="presentation"><a role="menuitem"
+																tabindex="-1"
+																th:href="@{/documents/archivar-documento?id=} + ${lista.documentoId}">ARCHIVAR</a></li>
+														</ul></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="x_panel">
+									<div class="x_title">
+
+										<h2>COPIA INFORMATIVA DE DOCUMENTOS</h2>
+										<ul class="nav navbar-right panel_toolbox">
+											<li><a class="collapse-link"><i
+													class="fa fa-chevron-up"></i></a></li>
+											<li><a class="close-link"><i class="fa fa-close"></i></a>
+											</li>
+										</ul>
+										<div class="clearfix"></div>
+									</div>
+									<div class="x_content">
+
+										<!-- 									<table id="datatable" class="table table-striped table-bordered"> -->
+										<table id=""
+											class="table table-striped table-bordered  nowrap display"
+											cellspacing="0" width="100%">
+											<thead>
+												<tr>
+													<th>NUM. DOC.</th>
+													<th>Asunto</th>
+													<th>Tipo Doc.</th>
+													<!-- 												<th>Decreto</th> -->
+													<th>Dependencia</th>
+													<th>Accion</th>
+												</tr>
+											</thead>
+
+											<!-- id="tablaDecreto" -->
+											<tbody>
+												<tr th:each="copi : ${copiainformativa}">
+													<td th:text="${copi.num_documento}">OFICIO</td>
+													<td th:text="${copi.cod_decreto}">2201</td>
+													<td th:text="${copi.comentario}">13/05/2021</td>
+													<!-- 															<td th:text="${copi.prioridad}">DETEL</td> -->
+													<td th:text="${copi.decreto}">CONFIDENCIAL</td>
+													<td role="presentation" class="dropdown"><a id="drop4"
+														href="#" class="btn btn-success dropdown-toggle btn-xs"
+														data-toggle="dropdown" aria-haspopup="true" role="button"
+														aria-expanded="false"> Documents <span class="caret"></span>
+													</a>
+														<ul id="menu6" class="dropdown-menu animated fadeInDown"
+															role="menu">
+															<li role="presentation"><a role="menuitem"
+																tabindex="-1" data-toggle="modal"
+																data-target=".bs-example-modal-sm"
+																th:onclick="ver([[(${copi.cod_documento})]])">VER</a></li>
+															<li role="presentation"><a role="menuitem"
+																tabindex="-1"
+																th:href="@{/documents/archivar-copinfo?iddoc=} + ${copi.cod_documento} +@{&idcopinf=}+ ${copi.prioridad}+@{&estdado=1}">ARCHIVAR</a></li>
+														</ul></td>
+												</tr>
+
+											</tbody>
+										</table>
+
+
+									</div>
+								</div>
+							</div>
+
+
+
+
+
+							<!-- inicio del modal -->
+							<div class="modal fade bs-example-modal-sm" tabindex="-1"
+								role="dialog" aria-hidden="true">
+								<div class="modal-dialog modal-lg">
+									<div class="modal-content">
+
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">X</span>
+											</button>
+											<h4 class="modal-title" id="myModalLabel2">VISTA DEL
+												DOCUMENTO</h4>
+											<h1 th:text="${namefile}"></h1>
+										</div>
+										<div class="embed-responsive embed-responsive-16by9"
+											style="height: 720px">
+											<iframe class="embed-responsive-item"
+												title="W3Schools Free Online Web Tutorials" width="100%"
+												height="100%" id="filecontent"></iframe>
+											<h1 th:text="${namefile}"></h1>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-danger"
+												data-dismiss="modal">Cerrar</button>
+										</div>
+
+									</div>
+								</div>
+							</div>
+							<!--fin del modal -->
+
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<div class="x_panel">
+									<div class="x_title">
+										<div class="title_right"></div>
+										<h2>ESTADO DE DOCUMENTOS</h2>
+										<ul class="nav navbar-right panel_toolbox">
+											<li><a class="collapse-link"><i
+													class="fa fa-chevron-up"></i></a></li>
+											<li><a class="close-link"><i class="fa fa-close"></i></a>
+											</li>
+										</ul>
+										<div class="clearfix"></div>
+									</div>
+									<div class="x_content">
+
+										<div class="" role="tabpanel" data-example-id="togglable-tabs">
+											<ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+												<li role="presentation" class="active"><a
+													href="#tab_content1" id="home-tab" role="tab"
+													data-toggle="tab" aria-expanded="true">Doc Remitidos</a></li>
+												<li role="presentation" class=""><a
+													href="#tab_content2" role="tab" id="profile-tab"
+													data-toggle="tab" aria-expanded="false">Doc Respondidos</a></li>
+												<li role="presentation" class=""><a
+													href="#tab_content3" role="tab" id="profile-tab2"
+													data-toggle="tab" aria-expanded="false">Doc Archivados</a></li>
+												<li role="presentation" class=""><a
+													href="#tab_content4" role="tab" id="profile-tab2"
+													data-toggle="tab" aria-expanded="false">Cop. Inf
+														Archivados</a></li>
+											</ul>
+											<div id="myTabContent" class="tab-content">
+
+												<!-- TABLE REMITIDOS-->
+												<div role="tabpanel" class="tab-pane fade active in"
+													id="tab_content1" aria-labelledby="home-tab">
+
+													<!-- start recent activity -->
+													<!-- 													<table id="" -->
+													<!-- 														class="table table-striped table-bordered display"> -->
+													<!-- 														<thead> -->
+													<!-- 															<tr> -->
+													<!-- 																<th>Tipo Doc.</th> -->
+													<!-- 																<th>Nro. Doc.</th> -->
+													<!-- 																<th>Clasificacion</th> -->
+													<!-- 																<th>Fecha</th> -->
+													<!-- 																<th>Responsable</th> -->
+													<!-- 															</tr> -->
+													<!-- 														</thead> -->
+													<!-- 														<tbody> -->
+													<!-- 															<tr th:each="remitido : ${listaremitidos}"> -->
+													<!-- 																<td th:text="${remitido.acronimoTipoDoc}">OFICIO</td> -->
+													<!-- 																<td th:text="${remitido.numDoc}">2201</td> -->
+													<!-- 																<td th:text="${remitido.fechaDoc}">13/05/2021</td> -->
+													<!-- 																<td th:text="${remitido.unidadResponsable}">DETEL</td> -->
+													<!-- 																<td th:text="${remitido.acronimoClasificacion}">CONFIDENCIAL</td> -->
+													<!-- 															</tr> -->
+													<!-- 														</tbody> -->
+													<!-- 													</table> -->
+
+													<table id="mitabla"
+														class="table table-striped table-bordered display">
+														<thead>
+															<tr>
+																<th>Tipo Doc.</th>
+																<th>Nro. Doc.</th>
+																<th>Fec. Doc.</th>
+																<th>Asunto</th>
+																<th>Responsable</th>
+																<th>Archivo</th>
+																<!-- 												<th>Responsable</th> -->
+															</tr>
+														</thead>
+														<tbody>
+															<tr th:each="remitido : ${listaremitidos}">
+																<td th:text="${remitido.respuesta}">OFICIO</td>
+																<td th:text="${remitido.numeroDocumento}">2201</td>
+																<td th:text="${remitido.fechaDocumento}"></td>
+																<td th:text="${remitido.asunto}">DETEL</td>
+																<td th:text="${remitido.unidadResponsable}">CONFIDENCIAL</td>
+<!-- 																<td th:text="${#listaremitidos.format(fechaDocumento, 'dd/MM/yy')}"></td> -->
+																<td>
+																	<button type="button" class="btn btn-success"
+																		role="menuitem" tabindex="-1" data-toggle="modal"
+																		data-target=".bs-example-modal-sm"
+																		th:onclick="ver([[(${remitido.documentoId})]])">
+																		<span class="glyphicon glyphicon-folder-open"></span>
+																	</button>
+
+																</td>
+
+																<!-- 												<td><span th:each="res : ${respondido}" -->
+																<!-- 													th:if="${remitido.numeroDocumento  == res.documentoReferencia}" -->
+																<!-- 													th:text=${res.asunto}></span></td> -->
+
+
+
+															</tr>
+														</tbody>
+													</table>
+													<!-- end recent activity -->
+
+												</div>
+
+												<!-- TABLE RESPONDIDOS-->
+												<div role="tabpanel" class="tab-pane fade" id="tab_content2"
+													aria-labelledby="profile-tab">
+
+													<!-- start user projects -->
+													<table class="table table-striped table-bordered display">
+														<thead>
+															<tr>
+																<th>Tipo Documento</th>
+																<th>Num Documento</th>
+																<th>Doc Referencia</th>
+																<th>Fecha Remision</th>
+																<th>Responsable</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr th:each="respuesta: ${listarespondidos}">
+																<td th:text="${respuesta.acronimoTipoDoc}"></td>
+																<td th:text="${respuesta.numDoc}"></td>
+																<td th:text="${respuesta.documentoReferencia}"></td>
+																<td th:text="${respuesta.fechaDoc}"></td>
+																<td th:text="${respuesta.unidadResponsable}"></td>
+															</tr>
+
+														</tbody>
+													</table>
+													<!-- end user projects -->
+
+												</div>
+
+												<!-- TABLE ARCHIVADOS-->
+												<div role="tabpanel" class="tab-pane fade" id="tab_content3"
+													aria-labelledby="profile-tab">
+													<table class="table table-striped table-bordered display">
+														<thead>
+															<tr>
+																<th>Tipo Documento</th>
+																<th>Num Documento</th>
+																<th>Fecha Documento</th>
+																<th>Fecha Archivo</th>
+																<th>Remitente</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr th:each="archivado: ${listaarchivados}">
+																<td th:text="${archivado.acronimoTipoDoc}"></td>
+																<td th:text="${archivado.numDoc}"></td>
+																<td th:text="${archivado.fechaDoc}"></td>
+																<td th:text="${archivado.fechaRecepcionDoc}"></td>
+																<td th:text="${archivado.unidadRemitente}"></td>
+															</tr>
+
+														</tbody>
+													</table>
+												</div>
+
+												<!-- TABLE ARCHIVADOS COPIA INFORMA-->
+												<div role="tabpanel" class="tab-pane fade table-responsive"
+													id="tab_content4" aria-labelledby="profile-tab">
+
+
+													<table
+														class="table table-striped table-bordered display ta">
+														<thead>
+															<tr>
+																<th>NUM. DOC.</th>
+																<th>Asunto</th>
+																<th>Tipo Doc.</th>
+																<!-- 												<th>Decreto</th> -->
+																<th>Dependencia</th>
+																<th>VER DOCUMENTO</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr th:each="copi: ${decretocopinf}">
+																<td th:text="${copi.num_documento}">OFICIO</td>
+																<td th:text="${copi.cod_decreto}">2201</td>
+																<td th:text="${copi.comentario}">13/05/2021</td>
+																<!-- 															<td th:text="${copi.prioridad}">DETEL</td> -->
+																<td th:text="${copi.decreto}">CONFIDENCIAL</td>
+																<td>
+																	<button type="button" class="btn btn-success"
+																		role="menuitem" tabindex="-1" data-toggle="modal"
+																		data-target=".bs-example-modal-sm"
+																		th:onclick="ver([[(${copi.cod_documento})]])">
+																		<span class="glyphicon glyphicon-folder-open"></span>
+																	</button>
+
+																</td>
+															</tr>
+
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+				<!-- /page content -->
+
+
+			</div>
+
+			<div th:insert="/fragments/footer :: footer"></div>
+		</div>
+
+		<div th:insert="/fragments/jQuery :: jQuery"></div>
+		<script src="../assets/ajax/decretoDocumento.js"></script>
+</body>
+</html>

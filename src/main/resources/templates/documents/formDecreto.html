@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="/fragments/header :: header">
+</head>
+
+<body class="nav-md"
+	onload="listarnucleosremitente();">
+	<div class="container body">
+		<div class="main_container">
+<!-- 			<div th:insert="/fragments/natLeft :: left-nav"></div> -->
+			<div th:replace="/layout/layout :: left-nav"></div>
+			<div th:insert="/fragments/topNav :: top-nav"></div>
+
+			<!-- page content -->
+			<div class="right_col" role="main">
+				<div class="">
+
+					<div class="clearfix"></div>
+
+					<div class="row">
+						<div class="col-md-6 col-sm-6 col-xs-12">
+							<div class="x_panel">
+								<div class="x_title">
+									<div class="title_right"></div>
+									<h2>DOCUMENTOS REGISTRADOS</h2>
+									<ul class="nav navbar-right panel_toolbox">
+										<li><a class="collapse-link"><i
+												class="fa fa-chevron-up"></i></a></li>
+										<li><a class="close-link"><i class="fa fa-close"></i></a>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+
+								<div class="x_content">
+
+									<form class="form-horizontal" novalidate th:action="@{/documents/save-decreto}" method="POST"  th:object="${documento}">
+
+										<input type="hidden" value="9" name="estadoRegistro" /> <!-- CODIGO 101 DECRETADO POR EL SECRETARIO -->
+										
+										<input type="hidden" id="documentoId"  name="documentoId" th:value="${codigo}" />
+ 										<input type="hidden"  id="descripcion" name="descripcionDocumento"/>
+ 										<input type="hidden"  name="archivo" id="namefile"/>
+
+
+										<div
+											class="ccol-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+											<label><input type="radio" name="tipoOrganizacion" value="I"  id="internos" ReadOnly=""> DOCUMENTOS
+												INTERNOS</label>
+										</div>
+										<div
+											class="ccol-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+											<label><input type="radio" name="tipoOrganizacion" id="externos" value="E" ReadOnly=""> DOCUMENTOS EXTERNOS</label>
+										</div>
+										<div
+											class="ccol-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+											<label for="formFileMultiple" class="form-label">Seleccione
+												un Tipo de Documento *</label> <select id="cbotipodocumento"
+												name="tipoDocumento"class="form-control" ReadOnly="">
+											</select>
+										</div>
+
+										<div
+											class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+											<label for="formFileMultiple" class="form-label">Ingrese
+												el Numero de Documento *</label> <input type="text"
+												class="form-control" id="idTipoDoc"
+												name="numeroDocumento"
+												placeholder="Numero de Documento" ReadOnly="">
+										</div>
+										<div class='col-sm-6'>
+											<label for="formFileMultiple" class="form-label">Fecha
+												del Documento *</label>
+											<div class="form-group">
+												<div class='input-group'>
+													<input type='text' class="form-control"
+														name="fechaDocumento" id="fechaDocumento"
+														 ReadOnly="" /> <span class="input-group-addon">
+														<span class="glyphicon glyphicon-calendar"></span>
+													</span>
+												</div>
+											</div>
+										</div>
+										<div class='col-sm-6'>
+											<label for="formFileMultiple" class="form-label">Fecha
+												de Recepcion *</label>
+											<div class="form-group">
+												<div class='input-group'>
+													<input type="text" class="form-control" id="fechaRecepcion"
+														name="fechaRecepcion"
+														ReadOnly="" /> <span class="input-group-addon">
+														<span class="glyphicon glyphicon-calendar"></span>
+													</span>
+												</div>
+											</div>
+										</div>
+										<div
+											class="ccol-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+											<label for="formFileMultiple" class="form-label">Nucleo
+												Remitente *</label> <select id="cbonucleos" name="nucleoRemitente"
+											 class="form-control"
+												onchange="listarbrigadas();" ReadOnly="">
+											</select>
+										</div>
+										<div
+											class="ccol-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+											<label for="formFileMultiple" class="form-label">Gran
+												Unidad Remitente *</label> <select class="form-control"
+												onchange="listarunidades();" id="cbobrigadas" name="brigadaRemitente" ReadOnly="">
+											</select>
+										</div>
+										<div
+											class="ccol-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+											<label for="formFileMultiple" class="form-label">Unidad
+												Remitente *</label> <select class="form-control" id="cbounidades"
+												name="unidadRemitente" ReadOnly="">
+											</select>
+										</div>
+										<div
+											class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
+											<label for="formFileMultiple" class="form-label">Asunto
+												del Documento *</label>
+											<textarea id="asunto" required="required" name="asunto"
+												 class="form-control col-md-7 col-xs-12" ReadOnly=""
+												></textarea>
+										</div>
+										<div
+											class="ccol-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+											<label for="formFileMultiple" class="form-label">Nucleo
+												Responsable *</label> <select id="cbonucleosremitente" name="nucleoResponsable"
+												class="form-control" onchange="listarbrigadasremitente();">
+											</select>
+										</div>
+										<div
+											class="ccol-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+											<label for="formFileMultiple" class="form-label">Gran
+												Unidad Responsable *</label> <select class="form-control"
+												id="cbobrigadasremitente" name="brigadaResponsable" onchange="listarunidadesremitente();" >
+												<option>Seleccione ...</option>
+											</select>
+										</div>
+										<div
+											class="ccol-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+											<label for="formFileMultiple" class="form-label">
+												Unidad Responsable *</label> <select id="cbounidadesremitente"  
+												class="form-control" name="unidadResponsable" >
+												<option>Seleccione ...</option>	
+											</select>
+										</div>
+										<div class="form-group">
+											<div>
+												<button type="submit" class="btn btn-danger">Cancel</button>
+												<button id="send" type="submit" class="btn btn-success">Guardar</button>
+											</div>
+<!-- 											<a th:href="@{/documents/distribucion-documento?id=} + ${codigo}" class="btn btn-success">Decretar</a> -->
+										</div>
+
+									</form>
+
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6 col-sm-6 col-xs-12">
+							<div class="x_panel">
+								<div class="x_title">
+									<div class="title_right"></div>
+									<h2>DETALLE DEL DOCUMENTO</h2>
+									<ul class="nav navbar-right panel_toolbox">
+										<li><a class="collapse-link"><i
+												class="fa fa-chevron-up"></i></a></li>
+										<li><a class="close-link"><i class="fa fa-close"></i></a>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content" style="height: 720px">
+									<!-- 									<p th:text="${decreto.token}"></p> -->
+									<iframe th:src="@{/archivo/} + ${namefile}"
+										title="W3Schools Free Online Web Tutorials" width="100%"
+										height="100%"></iframe>
+<!-- 										<p th:text="@{/archivo/} + ${namefile}"></p> -->
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /page content -->
+			<div th:insert="/fragments/footer :: footer"></div>
+
+		</div>
+	</div>
+
+	<div th:insert="/fragments/jQuery :: jQuery"></div>
+<script src="../assets/ajax/cargarselect.js"></script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="/fragments/header :: header"></head>
+<!-- <head th:insert="/layout/layout :: header"></head> -->
+
+<body class="nav-md">
+	<div class="container body">
+		<div class="main_container">
+			<div th:insert="/fragments/natLeft :: left-nav"></div>
+<!-- 			<div th:replace="/layout/layout :: left-nav"></div> -->
+			<div th:insert="/fragments/topNav :: top-nav"></div>
+			<!-- page content -->
+			<!-- page content -->
+			<div class="right_col" role="main">
+				<!-- top tiles -->
+				<div class="row tile_count">
+					<div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
+						<span class="count_top"><i class="fa fa-user"></i>
+							Documentos Recibidos</span>
+						<div class="count green" id="idresponsable">2500</div>
+						<!-- 						<P TH:TEXT="${DATOSUNIDAD.REMITIDOS}"></P> -->
+						<!-- 						<span class="count_bottom"><i class="green">4% </i></span> -->
+					</div>
+					<div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
+						<span class="count_top"><i class="fa fa-clock-o"></i>
+							Documentos Remitidos</span>
+						<div class="count green" id="idremitidos">123</div>
+												
+						<!-- 						<span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i></span> -->
+					</div>
+					
+					<div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
+						<span class="count_top"><i class="fa fa-user"></i> Total
+							Respondidos</span>
+													
+						<div class="count green" id="idrespondidos">2,623</div>
+						<!-- 						<span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>100% </i> </span> -->
+					</div>
+					<div class="col-md-3 col-sm-6 col-xs-6 tile_stats_count">
+						<span class="count_top"><i class="fa fa-user"></i> Total
+							Documentos</span>
+												
+						<div class="count green" id="idtotal">2,623</div>
+						<!-- 						<span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>100% </i> </span> -->
+					</div>
+				</div>
+				<!-- /top tiles -->
+				<br />
+				<div class="row">
+					<div class="col-md-4 col-sm-4 col-xs-12">
+						<div class="x_panel tile flexible_height_320">
+							<div class="x_title">
+								<h2>Documentos Recibidos</h2>
+								<ul class="nav navbar-right panel_toolbox">
+									<li><a class="collapse-link"><i
+											class="fa fa-chevron-up"></i></a></li>
+									<li class="dropdown"><a href="#" class="dropdown-toggle"
+										data-toggle="dropdown" role="button" aria-expanded="false"><i
+											class="fa fa-wrench"></i></a></li>
+									<li><a class="close-link"><i class="fa fa-close"></i></a>
+									</li>
+								</ul>
+								<div class="clearfix"></div>
+							</div>
+							<div id="idrecibidos" class="x_content">
+								
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-4 col-sm-4 col-xs-12">
+						<div class="x_panel tile flexible_height overflow_hidden">
+							<div class="x_title">
+								<h2>Total de Documentos por Clasificacion</h2>
+								<ul class="nav navbar-right panel_toolbox">
+									<li><a class="collapse-link"><i
+											class="fa fa-chevron-up"></i></a></li>
+									<li class="dropdown"><a href="#" class="dropdown-toggle"
+										data-toggle="dropdown" role="button" aria-expanded="false"><i
+											class="fa fa-wrench"></i></a></li>
+									<li><a class="close-link"><i class="fa fa-close"></i></a>
+									</li>
+								</ul>
+								<div class="clearfix"></div>
+							</div>
+							<div class="x_content">
+								<table class="" style="width: 100%">
+									<tr>
+										<th style="width: 37%;">
+											<p>Torta</p>
+										</th>
+										<th>
+											<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+												<p class="">Leyenda</p>
+											</div>
+											<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+												<p class="">Total</p>
+											</div>
+										</th>
+									</tr>
+									<tr>
+										<td>
+											<canvas class="canvasDoughnut" height="140" width="140"
+												style="margin: 15px 10px 10px 0"></canvas>
+										</td>
+										<td>
+											<table class="tile_info">
+												<tr>
+													<td>
+														<p>
+															<i class="fa fa-square blue"></i>COMUN
+														</p>
+													</td>
+													<td>30%</td>
+												</tr>
+												<tr>
+													<td>
+														<p>
+															<i class="fa fa-square green"></i>SECRETO
+														</p>
+													</td>
+													<td>10%</td>
+												</tr>
+												<tr>
+													<td>
+														<p>
+															<i class="fa fa-square purple"></i>RESERVADO
+														</p>
+													</td>
+													<td>20%</td>
+												</tr>
+												<tr>
+													<td>
+														<p>
+															<i class="fa fa-square aero"></i>CONFIDENCIAL
+														</p>
+													</td>
+													<td>15%</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-4 col-sm-4 col-xs-12">
+						<div class="x_panel tile flexible_height_320">
+							<div class="x_title">
+								<h2>Documentos Remitidos</h2>
+								<ul class="nav navbar-right panel_toolbox">
+									<li><a class="collapse-link"><i
+											class="fa fa-chevron-up"></i></a></li>
+									<li class="dropdown"><a href="#" class="dropdown-toggle"
+										data-toggle="dropdown" role="button" aria-expanded="false"><i
+											class="fa fa-wrench"></i></a></li>
+									<li><a class="close-link"><i class="fa fa-close"></i></a>
+									</li>
+								</ul>
+								<div class="clearfix"></div>
+							</div>
+                           <!-- contenido dinamico desde js -->
+							<div id="idremit" class="x_content">
+								
+							</div>
+							<!-- fin contenido dinamico desde js -->
+						</div>
+					</div>
+
+				</div>
+
+
+			</div>
+			<!-- /page content -->
+
+			<div th:insert="/fragments/footer :: footer"></div>
+		</div>
+	</div>
+	<div th:insert="/fragments/jQuery :: jQuery"></div>
+	
+	
+<script src="../assets/ajax/dashboard.js"></script>
+<script src="../assets/ajax/docRecibidosDashboard.js"></script>
+<script src="../assets/ajax/docRemitidosDashboard.js"></script>
+</body>
+</html>

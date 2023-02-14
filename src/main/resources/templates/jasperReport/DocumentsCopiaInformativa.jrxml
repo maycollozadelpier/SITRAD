@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DocumentsCopiaInformativa" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cd84927a-1e1f-49ec-9f45-9c2afb1b6fc6">
+	<property name="ireport.zoom" value="1.6105100000000017"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="P_DEPENDENCIA" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\SpringProyectos\\copere-tramites\\src\\main\\resources\\templates\\jasperReport\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select dc.nid_documento,d.vnumero_documento, dc.id_distribucion,dt.descripcion,ci.vcod_unidad_copia_informativa, c.comentario,
+DECODE  (c.prioridad, '0', 'EN LA FECHA','1','URGENTE','2','MUY URGENTE') PRIORIDAD
+from detel_distribucion_documento dc , detel_distribucion dt,detel_copia_informativa ci, detel_documento d, detel_comentario_documento c
+where dc.id_distribucion = dt.id_distribucion and dc.nid_documento = ci.nid_documento AND  dc.nid_documento=d.nid_documento and dc.nid_documento=c.nid_documento
+and d.vid_tipo_estado='0001'
+and ci.vcod_unidad_copia_informativa = $P{P_DEPENDENCIA}]]>
+	</queryString>
+	<field name="NID_DOCUMENTO" class="java.lang.String"/>
+	<field name="VNUMERO_DOCUMENTO" class="java.lang.String"/>
+	<field name="ID_DISTRIBUCION" class="java.lang.String"/>
+	<field name="DESCRIPCION" class="java.lang.String"/>
+	<field name="VCOD_UNIDAD_COPIA_INFORMATIVA" class="java.lang.String"/>
+	<field name="COMENTARIO" class="java.lang.String"/>
+	<field name="PRIORIDAD" class="java.lang.String"/>
+	<group name="CopiaInf">
+		<groupExpression><![CDATA[$F{NID_DOCUMENTO}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="124" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="c37a8e83-fc48-4cdd-9c1e-a4020984ffc3" x="471" y="0" width="200" height="34"/>
+				<subreportParameter name="P_DEPENDENCIA"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "SUBREPORT.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement uuid="75cd0603-d7b5-477c-9515-9408c5511926" x="38" y="12" width="98" height="43"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "subreportePrueba.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

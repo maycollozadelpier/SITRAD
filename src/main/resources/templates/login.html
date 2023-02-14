@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | 2021</title>
+
+
+<!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+<link rel="stylesheet"
+	href="assets/cssLogin/bootstrap.min.css">
+
+
+<!-- Los iconos tipo Solid de Fontawesome-->
+<link rel="stylesheet"
+	href="assets/cssLogin/solid2.css">
+
+
+<!-- Nuestro css-->
+<link rel="stylesheet" type="text/css" href="assets/cssLogin/index.css">
+</head>
+<body>
+	<div class="modal-dialog text-center">
+		<div class="col-sm-8 main-section">
+			<div class="modal-content">
+				<div class="col-12 user-img">
+				<div class="copyright1"><strong> SISTEMA DE TRAMITE DOCUMENTARIO DEL COPERE</strong></div></br>
+				
+					<img src="assets/images/EscudoCopere.png" />
+					<div class="copyright"><strong> BIEMVENIDO</strong></div>
+				</div>
+				
+				
+				<form class="col-12" th:action="@{/login}" method="post">
+					<div class="form-group" id="user-group">
+						<input  type="text" class="form-control"
+							placeholder="Nombre de usuario" name="username" autocomplete="off" />
+					</div>
+					<div class="form-group" id="contrasena-group">
+						<input type="password" class="form-control"
+							placeholder="Contrasena" name="password" />
+					</div>
+					<button type="submit" class="btn btn-success">
+						<i class="fas fa-sign-in-alt"></i> Ingresar
+					</button>
+				</form>
+<!-- 				<div class="col-12 forgot"> -->
+<!-- 					<a href="#">Recordar contrasena?</a> -->
+<!-- 				</div> -->
+				<div th:if="${param.error}" class="alert alert-danger" role="alert">
+					Usuario o Contraseña Invalidos.</div>
+				<div th:if="${param.logout}" class="alert alert-danger"
+					role="alert">Usted ha sido desconectado.</div>
+			</div><br>
+			<div class="modal-content">
+			 <div class="copyright-box">
+                    <div class="copyright">
+                        
+                      <a href=""><strong>&copy; 2021 - Departamento de Telematica del Copere   &copy;LPJ</strong></a>
+                    </div>
+                </div>
+            </div>
+		</div>
+	</div>
+
+	<!--JQUERY-->
+	<script
+		src="assets/jsLogin/jquery.min.js"></script>
+	<script
+		src="assets/jsLogin/bootstrap.min.js"></script>
+	<script src="assets/jsLogin/all.js"></script>
+</body>
+</html>

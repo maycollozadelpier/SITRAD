@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="/fragments/header :: header">
+</head>
+<body class="nav-md">
+	<div class="container body">
+		<div class="main_container">
+			<div th:insert="/fragments/natLeft :: left-nav"></div>
+			<!-- 			<div th:replace="/layout/layout :: left-nav"></div> -->
+			<div th:insert="/fragments/topNav :: top-nav"></div>
+			<!-- page content -->
+			<div class="right_col" role="main">
+				<div class="">
+					<div class="page-title">
+						<div class="title_left">
+							<h3>DECRETO Y DISTRIBUCION DE DOCUMENTOS</h3>
+						</div>
+						<div class="title_right">
+							<div
+								class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+								<div class="input-group">
+									<input type="text" class="form-control"
+										placeholder="Search for..."> <span
+										class="input-group-btn">
+										<button class="btn btn-default" type="button">Go!</button>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<!-- Smart Wizard -->
+							<div id="wizard" class="form_wizard wizard_horizontal">
+								<div class="x_panel">
+									<div class="x_content">
+										<div class="col-md-12 col-sm-12 col-xs-12 profile_details">
+											<div class="x_panel">
+												<div class="x_title">
+													<h2>DISTRIBUCION - (COPIA INFORMATIVA)</h2>
+													<div class="clearfix"></div>
+												</div>
+												<div class="x_content">
+													<div
+														class="ccol-md-2 col-sm-2 col-xs-12 form-group has-feedback"
+														th:each="lista : ${dependencias}">
+														<div class="checkbox" onclick="flat();">
+															<label onclick="flat();"> <input type="checkbox"
+																name="cpinf[]" onfocus="flat();" onblur="flat();"
+																onchange="flat();" th:value="${lista.unidadCodigo}"
+																class="flat" th:text="${lista.unidadAbreviatura}">
+															</label>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div
+									class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
+									<label for="formFileMultiple" class="form-label">OBSERVACIONES</label>
+									<textarea required="required" name="comentario" id="comentario"
+										class="form-control col-md-7 col-xs-12"></textarea>
+								</div>
+								<div
+									class="ccol-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+									<div class="checkbox">
+										<label> <input type="radio" class="flat"
+											name="prioridad" th:value="0"> EN LA FECHA
+										</label>
+									</div>
+								</div>
+								<div
+									class="ccol-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+									<div class="checkbox">
+										<label> <input type="radio" class="flat"
+											name="prioridad" th:value="1"> URGENTE
+										</label>
+									</div>
+								</div>
+								<div
+									class="ccol-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+									<div class="checkbox">
+										<label> <input type="radio" class="flat"
+											name="prioridad" th:value="2"> MUY URGENTE
+										</label>
+									</div>
+								</div>
+
+
+								<div class="form-group">
+									<div class="text-center">
+										<button id="btnguardar" type="submit" class="btn btn-success"
+											disabled="disabled"
+											onclick="enviarCopiaInformativa();enviar();">GUARDAR</button>
+										<!-- 											<a class="btn btn-danger" href="/documents/registro">Regresar</a> -->
+										<a th:href="@{/documents/registro-remitidos}"
+											class="btn btn-danger">NINGUNO</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+		<!-- /page content -->
+		<div th:insert="/fragments/footer :: footer"></div>
+	</div>
+	<div th:insert="/fragments/jQuery :: jQuery"></div>
+	<script src="../assets/ajax/copiaInformativa.js"></script>
+	<script src="../assets/ajax/distribucion.js"></script>
+</body>
+</html>

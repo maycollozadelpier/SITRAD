@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="/fragments/header :: header">
+<!-- <head th:insert="/layout/layout :: header"></head> -->
+</head>
+
+
+
+
+
+<body class="nav-md">
+	<div class="container body">
+		<div class="main_container">
+						<div th:insert="/fragments/natLeft :: left-nav"></div>
+<!-- 			<div th:replace="/layout/layout :: left-nav"></div> -->
+			<div th:insert="/fragments/topNav :: top-nav"></div>
+
+			<!-- page content -->
+			<div class="right_col" role="main">
+				<div class="">
+
+					<div class="clearfix"></div>
+
+					<div class="row">
+
+					
+					</div>
+
+				</div>
+
+			</div>
+
+			<!-- /page content -->
+		</div>
+
+	</div>
+
+
+
+	<div th:insert="/fragments/footer :: footer"></div>
+
+
+	<div th:insert="/fragments/jQuery :: jQuery"></div>
+
+	<script src="/assets/ajax/cargarselect.js"></script>
+
+</body>
+</html>

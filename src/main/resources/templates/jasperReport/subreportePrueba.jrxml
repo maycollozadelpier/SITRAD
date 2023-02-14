@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subreportePrueba" language="groovy" pageWidth="802" pageHeight="555" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="d68dd62a-7f0a-45f1-a1e1-bf19084eac78">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 1" uuid="bb061025-09d4-432c-8aab-b5e884cfa38f">
+		<queryString language="SQL">
+			<![CDATA[SELECT * FROM DETEL_PERSONA]]>
+		</queryString>
+		<field name="NID_PERSONA" class="java.math.BigDecimal"/>
+		<field name="VAPEMAT_PERSONA" class="java.lang.String"/>
+		<field name="VAPEPAT_PERSONA" class="java.lang.String"/>
+		<field name="VCELULAR_PERSONA" class="java.lang.String"/>
+		<field name="VEMAIL_PERSONA" class="java.lang.String"/>
+		<field name="NESTADO_REGISTRO" class="java.math.BigDecimal"/>
+		<field name="VFOTO_PERSONA" class="java.lang.String"/>
+		<field name="VNOMBRE_PERSONA" class="java.lang.String"/>
+		<field name="VDNI_PERSONA" class="java.lang.String"/>
+	</subDataset>
+	<queryString>
+		<![CDATA[SELECT * FROM DETEL_PERSONA]]>
+	</queryString>
+	<field name="NID_PERSONA" class="java.math.BigDecimal"/>
+	<field name="VAPEMAT_PERSONA" class="java.lang.String"/>
+	<field name="VAPEPAT_PERSONA" class="java.lang.String"/>
+	<field name="VCELULAR_PERSONA" class="java.lang.String"/>
+	<field name="VEMAIL_PERSONA" class="java.lang.String"/>
+	<field name="NESTADO_REGISTRO" class="java.math.BigDecimal"/>
+	<field name="VFOTO_PERSONA" class="java.lang.String"/>
+	<field name="VNOMBRE_PERSONA" class="java.lang.String"/>
+	<field name="VDNI_PERSONA" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="50">
+			<staticText>
+				<reportElement uuid="22917284-4f52-4ce4-84f6-ad2fdcfcc23c" x="165" y="2" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[NID_PERSONA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="17cc15d3-fb5b-4113-b406-4e2ac96835d1" x="339" y="2" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[VAPEMAT_PERSONA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="73387b54-469c-40b7-8626-365981ab4860" x="524" y="2" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[VAPEPAT_PERSONA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="50">
+			<textField>
+				<reportElement uuid="d328b74e-75f4-45ac-b957-7cc2f4153e70" x="165" y="20" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{NID_PERSONA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="bf83d147-0a6e-4e9a-bbfb-91483e3f008b" x="339" y="21" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{VAPEMAT_PERSONA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b6f786a8-629b-4632-a05a-26d13e9d863e" x="524" y="26" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{VAPEPAT_PERSONA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

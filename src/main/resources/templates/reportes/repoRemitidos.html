@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="/fragments/header :: header">
+</head>
+
+<body class="nav-md" onload="listartipodocumento();">
+	<div class="container body">
+		<div class="main_container">
+			<div th:insert="/fragments/natLeft :: left-nav"></div>
+			<!-- 			<div th:replace="/layout/layout :: left-nav"></div> -->
+			<div th:insert="/fragments/topNav :: top-nav"></div>
+
+			<!-- page content -->
+			<div class="right_col" role="main">
+				<div class="">
+
+					<div class="clearfix"></div>
+
+					<div class="row">
+
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="x_panel">
+								<div class="x_title">
+									<div class="title_right">
+										<div
+											class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+											<div class="input-group">
+												<input type="text" class="form-control"
+													placeholder="Search for..."> <span
+													class="input-group-btn">
+													<button class="btn btn-default" type="button">BUSCAR!</button>
+												</span>
+											</div>
+										</div>
+									</div>
+									<h2>DOCUMENTOS REMITIDOS</h2>
+									<ul class="nav navbar-right panel_toolbox">
+										<li><a class="collapse-link"><i
+												class="fa fa-chevron-up"></i></a></li>
+										<li><a class="close-link"><i class="fa fa-close"></i></a>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content">
+									<form class="form-horizontal" novalidate
+										th:action="@{/pdfRemitidos}" method="GET"
+										th:object="${documento}" enctype="multipart/form-data">
+										<!-- 										<div -->
+										<!-- 											class="ccol-md-3 col-sm-3 col-xs-12 form-group has-feedback"> -->
+										<!-- 											<label for="formFileMultiple" class="form-label"> -->
+										<!-- 												Tipo Documento *</label> <select id="cbotipodocumento" -->
+										<!-- 												name="tipoDocumento" class="form-control"> -->
+										<!-- 											</select> -->
+										<!-- 										</div> -->
+
+
+
+										<div
+											class="ccol-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+											<label for="formFileMultiple" class="form-label">Seleccione
+												un Tipo de Documento *</label> <select id="cbotipodocumento"
+												name="tipoDocumento" class="form-control">
+											</select>
+										</div>
+										<div class='col-sm-2'>
+											<label for="formFileMultiple" class="form-label">Fecha
+												Inicio *</label>
+											<div class="form-group">
+												<div class='input-group date fechaReporte'>
+													<input type='text' class="form-control"
+														name="fechaRecepcionDocI" id='finicio' /> <span
+														class="input-group-addon"> <span
+														class="glyphicon glyphicon-calendar"></span>
+													</span>
+												</div>
+											</div>
+										</div>
+										<div class='col-sm-2'>
+											<label for="formFileMultiple" class="form-label">Fecha
+												Fin *</label>
+											<div class="form-group">
+												<div class='input-group date fechaReporte'>
+													<input type='text' class="form-control"
+														name="fechaRecepcionDocF" id='ffin' /> <span
+														class="input-group-addon"> <span
+														class="glyphicon glyphicon-calendar"></span>
+													</span>
+												</div>
+											</div>
+										</div>
+										<!-- 									<div class='col-sm-2'> -->
+										<!-- 										pdf<a class="btn btn-danger btn-xs float-right" -->
+										<!-- 											th:href="@{/pdfRecibidos}" target="_BLANK">GENERAR -->
+										<!-- 											REPORTE</a> -->
+										<!-- 									</div> -->
+										<div class="col-sm-2">
+											<div class='col-sm-2'>
+												<br>
+
+												<button id="send" type="submit" class="btn btn-success"
+													formtarget="_blank">
+													<i class="fa fa fa-download"></i> GENERAR PDF
+												</button>
+											</div>
+										</div>
+									</form>
+									<table id="" class="table table-striped table-bordered display">
+										<thead>
+											<tr>
+												<th>Tipo Doc.</th>
+												<th>Nro. Doc.</th>
+												<th>Fecha</th>
+												<th>Asunto</th>
+												<th>Responsable</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="remitido : ${listaremitidos}">
+												<!-- 												<td th:text="${remitido.acronimoTipoDoc}">OFICIO</td> -->
+												<!-- 												<td th:text="${remitido.numDoc}">2201</td> -->
+												<!-- 												<td th:text="${remitido.acronimoClasificacion}">CONFIDENCIAL</td> -->
+												<!-- 												<td th:text="${remitido.fechaDoc}">13/05/2021</td> -->
+												<!-- 												<td th:text="${remitido.unidadResponsable}">DETEL</td> -->
+												<td th:text="${remitido.respuesta}">OFICIO</td>
+												<td th:text="${remitido.numeroDocumento}">2201</td>
+
+												<td th:text="${remitido.fechaDocumento}"></td>
+												<td th:text="${remitido.asunto}">DETEL</td>
+												<td th:text="${remitido.unidadResponsable}">CONFIDENCIAL</td>
+
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /page content -->
+			<div th:insert="/fragments/footer :: footer"></div>
+		</div>
+	</div>
+	<div th:insert="/fragments/jQuery :: jQuery"></div>
+	<script src="../assets/ajax/cargarselect.js"></script>
+
+</body>
+</html>

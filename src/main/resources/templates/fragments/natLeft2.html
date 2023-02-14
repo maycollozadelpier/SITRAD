@@ -1,0 +1,107 @@
+<div th:fragment="left-nav" class="col-md-3 left_col menu_fixed">
+	<div class="left_col scroll-view">
+		<div class="navbar nav_title" style="border: 0;">
+			<a th:href="@{/dashboard}" class="site_title"><span>MESA
+					DE PARTES!</span></a>
+		</div>
+
+		<div class="clearfix"></div>
+
+		<!-- menu profile quick info -->
+		<div class="profile clearfix">
+
+			<img th:src="@{assets/build/images/img.jpg}" alt="10PX"
+				class="img-circle profile_img">
+				
+<!-- 			<img th:src="@{/archivo/} +${grls}" alt="10PX" class="img-circle profile_img"> -->
+
+		</div>
+		<!-- /menu profile quick info -->
+
+		<br />
+
+		<!-- sidebar menu -->
+		<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+			<div class="menu_section" sec:authorize="isAuthenticated()">
+
+				<h3 align="center" sec:authentication="name"></h3>
+				<!--                 <span th:text="${session.usuario.nombre} "></span> -->
+				<!-- 								<div class="profile_info" sec:authorize="isAuthenticated()"> -->
+				<!-- 									<span class="">Bienvenido</span> -->
+				<!-- 									<h2 sec:authentication="name"></h2> -->
+				<!-- 								</div> -->
+
+				<ul class="nav side-menu">
+					<li><a><i class="fa fa-home"></i> Home <span
+							class="fa fa-chevron-down"></span></a>
+						<ul class="nav child_menu">
+							<li
+								sec:authorize="hasAnyAuthority('Administrador','MesaPartesCopere', 'Secretario', 'usuario')"><a
+								th:href="@{/dashboard}">Dashboard</a></li>
+						</ul></li>
+					<li><a><i class="fa fa-edit"></i> Documentos <span
+							class="fa fa-chevron-down"></span></a>
+						<ul class="nav child_menu">
+							<li
+								sec:authorize="hasAnyAuthority('MesaPartesCopere', 'Administrador')"><a
+								th:href="@{/documents/registro}">Registrar Documento</a></li>
+							<li
+								sec:authorize="hasAnyAuthority('Secretario', 'Administrador')"><a
+								th:href="@{/documents/lista-decretar}">Decreto documento</a></li>
+							<li
+								sec:authorize="hasAnyAuthority('Secretario', 'Administrador')"><a
+								th:href="@{/documents/dependecias-responsables}">Seguimiento
+									Dependencias</a></li>
+							<li
+								sec:authorize="hasAnyAuthority('Secretario', 'Administrador')"><a
+								th:href="@{/documents/pendientes}">Seguimiento Pendientes</a></li>
+							<li sec:authorize="hasAnyAuthority('usuario', 'Administrador')"><a
+								th:href="@{/documents/lista-documentos}">Documentos
+									Recibidos</a></li>
+
+							<li
+								sec:authorize="hasAnyAuthority('Administrador','Secretario', 'usuario','MesaPartesCopere')"><a
+								th:href="@{/documents/registro-remitidos}">Documentos
+									Remitidos</a></li>
+						</ul></li>
+					<li><a><i class="fa fa-file-pdf-o"></i> Reporte <span
+							class="fa fa-chevron-down"></span></a>
+						<ul class="nav child_menu">
+							<!-- 							reporte dependencias  -->
+							<li
+								sec:authorize="hasAnyAuthority('usuario', 'Administrador','Secretario')"><a
+								th:href="@{/repoDiario}">Reporte Diario</a></li>
+							<!-- 								reporte mesa de partes -->
+							<li
+								sec:authorize="hasAnyAuthority('Administrador','MesaPartesCopere')"><a
+								th:href="@{/repoDiarioMesaPartes}">Registros Diarios </a></li>
+
+							<li
+								sec:authorize="hasAnyAuthority('Administrador', 'Secretario', 'usuario')"><a
+								th:href="@{/documents/repo-recibidos}">Documentos Recibidos</a></li>
+							<li
+								sec:authorize="hasAnyAuthority('Administrador', 'Secretario', 'usuario')"><a
+								th:href="@{/documents/repo-remitidos}">Documentos Remitidos</a></li>
+						</ul></li>
+				</ul>
+			</div>
+
+		</div>
+		<!-- /sidebar menu -->
+
+		<!-- /menu footer buttons -->
+		<div class="sidebar-footer hidden-small">
+			<a data-toggle="tooltip" data-placement="top" title="Settings"> <span
+				class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+			</a> <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+				<span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+			</a> <a data-toggle="tooltip" data-placement="top" title="Lock"> <span
+				class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+			</a> <a data-toggle="tooltip" data-placement="top" title="Logout"
+				href="login.html"> <span class="glyphicon glyphicon-off"
+				aria-hidden="true"></span>
+			</a>
+		</div>
+		<!-- /menu footer buttons -->
+	</div>
+</div>

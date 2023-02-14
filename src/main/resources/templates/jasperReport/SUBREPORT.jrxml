@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SUBREPORT" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="2644bcb9-7ea5-42c7-9715-05fd675dae17">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="P_DEPENDENCIA" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT * FROM DETEL_PERSONA]]>
+	</queryString>
+	<field name="NID_PERSONA" class="java.math.BigDecimal"/>
+	<field name="VAPEMAT_PERSONA" class="java.lang.String"/>
+	<field name="VAPEPAT_PERSONA" class="java.lang.String"/>
+	<field name="VCELULAR_PERSONA" class="java.lang.String"/>
+	<field name="VEMAIL_PERSONA" class="java.lang.String"/>
+	<field name="NESTADO_REGISTRO" class="java.math.BigDecimal"/>
+	<field name="VFOTO_PERSONA" class="java.lang.String"/>
+	<field name="VNOMBRE_PERSONA" class="java.lang.String"/>
+	<field name="VDNI_PERSONA" class="java.lang.String"/>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="cb0e3ae0-f4ad-48a7-b418-980f848416bf" x="46" y="2" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[VDNI_PERSONA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="77b46099-4e4c-400e-b03b-571dcbcac1b6" x="158" y="2" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[VNOMBRE_PERSONA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement uuid="94c267dd-c7c4-4a1c-835c-e100bca0900d" x="46" y="2" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{VDNI_PERSONA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="62832984-a5c8-42aa-9db5-b36fb5f92716" x="158" y="2" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{VNOMBRE_PERSONA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

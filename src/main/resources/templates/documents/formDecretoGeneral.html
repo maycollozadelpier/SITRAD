@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="/fragments/header :: header">
+</head>
+<body class="nav-md">
+	<div class="container body">
+		<div class="main_container">
+			<div th:insert="/fragments/natLeft :: left-nav"></div>
+			<!-- 			<div th:replace="/layout/layout :: left-nav"></div> -->
+			<div th:insert="/fragments/topNav :: top-nav"></div>
+			<!-- page content -->
+			<div class="right_col" role="main">
+				<div class="">
+					<div class="page-title">
+						<div class="title_left">
+							<h4>DECRETO Y DISTRIBUCION DE DOCUMENTOS</h4>
+						</div>
+						
+					</div>
+					<div class="clearfix"></div>
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<!-- Smart Wizard -->
+							<div id="wizard" class="form_wizard wizard_horizontal">
+								<div class="x_panel">
+									<div class="x_content">
+										<div class="col-md-12 col-sm-12 col-xs-12 profile_details">
+											<div class="x_panel">
+												<div class="x_title">
+													<h4>DISTRIBUCION - (COPIA INFORMATIVA)</h4>
+
+													<div class="clearfix"></div>
+												</div>
+												<div class="x_content">
+													<div
+														class="ccol-md-2 col-sm-2 col-xs-12 form-group has-feedback"
+														th:each="lista : ${dependencias}">
+														<div class="checkbox">
+															
+															<label> <input  type="checkbox" name="cpinf[]"
+																th:value="${lista.unidadCodigo}" class="flat"
+																th:text="${lista.unidadAbreviatura}"
+																>
+															</label>
+															
+															
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+
+<!-- 										<div class="col-md-12 col-sm-12 col-xs-12 profile_details"> -->
+<!-- 											<div class="x_panel"> -->
+<!-- 												<div class="x_title"> -->
+<!-- 													<h2>DECRETO</h2> -->
+<!-- 													<div class="clearfix"></div> -->
+<!-- 												</div> -->
+<!-- 												<div class="x_content"> -->
+<!-- 													<div -->
+<!-- 														class="ccol-md-2 col-sm-2 col-xs-12 form-group has-feedback" -->
+<!-- 														th:each="dist : ${distribucion}"> -->
+<!-- 														<div class="checkbox"> -->
+<!-- 															<label> <input type="checkbox" class="flat" -->
+<!-- 																name="distri[]" th:value="${dist.idDistribucion}" -->
+<!-- 																th:text="${dist.descripcion}"> -->
+<!-- 															</label> -->
+<!-- 														</div> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
+										<div
+											class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
+											<label for="formFileMultiple" class="form-label">OBSERVACIONES</label>
+											<textarea required="required" name="comentario"
+												id="comentario" class="form-control col-md-7 col-xs-12"></textarea>
+										</div>
+										<div
+											class="ccol-md-4 col-sm-4 col-xs-12 form-group has-feedback"  sec:authorize="hasAnyAuthority('MesaPartesCopere', 'Administrador')">
+											<div class="checkbox">
+												<label> <input type="radio" class="flat"
+													name="prioridad" th:value="0"> EN LA FECHA
+												</label>
+											</div>
+										</div>
+										<div
+											class="ccol-md-4 col-sm-4 col-xs-12 form-group has-feedback" sec:authorize="hasAnyAuthority('MesaPartesCopere', 'Administrador')">
+											<div class="checkbox">
+												<label> <input type="radio" class="flat"
+													name="prioridad" th:value="1"> URGENTE
+												</label>
+											</div>
+										</div>
+										<div
+											class="ccol-md-4 col-sm-4 col-xs-12 form-group has-feedback" sec:authorize="hasAnyAuthority('MesaPartesCopere', 'Administrador')">
+											<div class="checkbox">
+												<label> <input type="radio" class="flat"
+													name="prioridad" th:value="2"> MUY URGENTE
+												</label>
+											</div>
+										</div>
+
+
+									</div>
+								</div>
+								<div class="form-group">
+									<div>
+									 <input type="hidden" id="unirespondable" name="unirespondable"  th:value="${porid.unidadResponsable}">
+									   <input type="hidden" id="uniremite" name="uniremite"  th:value="${porid.unidadregistro}">
+									    <input type="hidden" id="id" name="id"  th:value="${porid.documentoId}">
+									   
+									
+									
+								
+									
+										<button id="send" type="submit" class="btn btn-success"
+											onclick="enviar(),registrounidadremite();">Enviar</button>
+											<button  class="btn btn-danger"
+											onclick="registrounidadremite();">Cancelar</button>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /page content -->
+				<div th:insert="/fragments/footer :: footer"></div>
+			</div>
+		</div>
+	</div>
+	<div th:insert="/fragments/jQuery :: jQuery"></div>
+	<script src="../assets/ajax/distribucion.js"></script>
+</body>
+</html>

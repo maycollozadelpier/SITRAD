@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="/fragments/header :: header">
+</head>
+
+<body class="nav-md" onload="listartipodocumento();">
+	<div class="container body">
+		<div class="main_container">
+			<div th:insert="/fragments/natLeft :: left-nav"></div>
+<!-- 			<div th:replace="/layout/layout :: left-nav"></div> -->
+			<div th:insert="/fragments/topNav :: top-nav"></div>
+
+			<!-- page content -->
+			<div class="right_col" role="main">
+				<div class="">
+
+					<div class="clearfix"></div>
+
+					<div class="row">
+
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="x_panel">
+								<div class="x_title">
+									<div class="title_right">
+										<div
+											class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+											<div class="input-group">
+												<input type="text" class="form-control"
+													placeholder="Search for..."> <span
+													class="input-group-btn">
+													<button class="btn btn-default" type="button">BUSCAR!</button>
+												</span>
+											</div>
+										</div>
+									</div>
+									<h2>REPORTE DIARIO DE DOCUMENTOS RECIBIDOS</h2>
+
+
+									<ul class="nav navbar-right panel_toolbox">
+										<li><a class="collapse-link"><i
+												class="fa fa-chevron-up"></i></a></li>
+										<li><a class="close-link"><i class="fa fa-close"></i></a>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content">
+
+									<div class="x_content" style="height: 720px">
+									<!-- 									<p th:text="${decreto.token}"></p> -->
+									<iframe th:src="@{/pdfDiario}"
+									    width="100%"
+										height="100%"></iframe>
+
+								</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- /page content -->
+			<div th:insert="/fragments/footer :: footer"></div>
+
+		</div>
+	</div>
+
+	<div th:insert="/fragments/jQuery :: jQuery"></div>
+
+	<script src="../assets/ajax/cargarselect.js"></script>
+</body>
+</html>

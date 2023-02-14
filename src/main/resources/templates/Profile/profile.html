@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="/fragments/header :: header">
+</head>
+
+<body class="nav-md">
+	<div class="container body">
+		<div class="main_container">
+						<div th:insert="/fragments/natLeft :: left-nav"></div>
+<!-- 			<div th:replace="/layout/layout :: left-nav"></div> -->
+			<div th:insert="/fragments/topNav :: top-nav"></div>
+
+			<!-- page content -->
+			<div class="right_col" role="main">
+				
+
+					<div class="clearfix"></div>
+
+					
+						<div class="col-md-12 col-sm-12 col-xs-12">
+
+
+							<div class="x_panel">
+								<div class="x_content">
+									<div class="embed-responsive embed-responsive-16by9">
+
+
+										<div class="x_title">
+											<div class="title_right"></div>
+											<h2>PERFIL</h2>
+											<ul class="nav navbar-right panel_toolbox">
+												<li><a class="collapse-link"><i
+														class="fa fa-chevron-up"></i></a></li>
+												<li><a class="close-link"><i class="fa fa-close"></i></a>
+												</li>
+											</ul>
+											<div class="clearfix"></div>
+										</div>
+
+										<div
+											class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+											<div class="x_content">
+												<div class="profile_img">
+													<div id="crop-avatar">
+														<img class="img-responsive avatar-view"
+															th:src="@{/archivo/} +${grls.foto}" alt="Avatar"
+															title="Change the avatar">
+													</div>
+												</div>
+												<a class="btn btn-success" data-toggle="modal"
+													data-target=".bs-example-modal-sm"><i
+													class="fa fa-edit m-right-xs"></i>Editar Foto</a> <br />
+											</div>
+										</div>
+
+										<div
+											class="col-md-9 col-sm-9 col-xs-12 form-group has-feedback">
+											<br></br>
+											<div
+												class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+												<h2 class="form-label">GRADO:</h2>
+											</div>
+											<div
+												class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+												<h3 th:text="${grls.acronimoGradoD}"></h3>
+											</div>
+											<div class="clearfix"></div>
+											<div
+												class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+												<h2 class="form-label">ARMA:</h2>
+											</div>
+											<div
+												class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+												<h3 th:text="${grls.acronimoArmaD}"></h3>
+											</div>
+											<div class="clearfix"></div>
+											<div
+												class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+												<h2 class="form-label">NOMBRES:</h2>
+											</div>
+											<div
+												class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+												<h3 th:text="${grls.nombre}"></h3>
+											</div>
+
+											<div class="clearfix"></div>
+											<div
+												class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+												<h2 class="form-label">CORREO:</h2>
+											</div>
+											<div
+												class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+												<h3 th:text="${grls.email}"></h3>
+											</div>
+											<div class="clearfix"></div>
+											<div
+												class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+												<h2 class="form-label">DNI:</h2>
+											</div>
+											<div
+												class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+												<h3 th:text="${grls.dni}"></h3>
+											</div>
+											<div class="clearfix"></div>
+											<div
+												class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+												<h2 class="form-label">DEPENDENCIA:</h2>
+											</div>
+											<div
+												class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+												<h3
+													th:text="${grls.acronimoNucleo} + '-' + ${grls.acronimoGGUU} + '-' +${grls.acronimoUnidad}"></h3>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						
+
+						<!-- inicio del modal -->
+						<div class="modal fade bs-example-modal-sm" tabindex="-1"
+							role="dialog" aria-hidden="true">
+							<div class="modal-dialog modal-lg">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">X</span>
+										</button>
+										<h4 class="modal-title" id="myModalLabel2">ACTUALIZAR
+											FOTO DE PERFIL</h4>
+									</div>
+									<div class="embed-responsive embed-responsive-16by9"
+										style="height: 100px">
+										<div class="col-md-12 col-sm-12 col-xs-12">
+
+
+											<form class="form-horizontal" novalidate
+												th:action="@{/save-persona}" method="POST"
+												th:object="${persona}" enctype="multipart/form-data">
+
+
+
+												<br></br> <input type="hidden" th:field="*{personaId}">
+												<div
+													class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+													<label for="formFileMultiple" class="form-label">Apellido
+														Paterno*</label> <input type="text" class="form-control" id=""
+														name="apellidoPaterno" placeholder="Apellido Paterno">
+												</div>
+												<div
+													class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+													<label for="formFileMultiple" class="form-label">Apellido
+														Materno*</label> <input type="text" class="form-control" id=""
+														name="apellidoMaterno" placeholder="Apellido Materno">
+												</div>
+												<div
+													class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
+													<label for="formFileMultiple" class="form-label">Nombre*</label>
+													<input type="text" class="form-control" id=""
+														name="nombres" placeholder="Nombres">
+												</div>
+												<div
+													class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+													<label for="formFileMultiple" class="form-label">DNI*</label>
+													<input type="text" class="form-control" id="inputSuccess3"
+														name="numeroDocumento" placeholder="Docummento Identidad">
+												</div>
+												<div
+													class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+													<label for="formFileMultiple" class="form-label">Celular*</label>
+													<input type="text" class="form-control" id="inputSuccess3"
+														name="celular" placeholder="Numero Celular">
+												</div>
+												<div
+													class="col-md-9 col-sm-9 col-xs-12 form-group has-feedback">
+													<label for="formFileMultiple" class="form-label">Email*</label>
+													<input type="email" class="form-control" id="inputSuccess3"
+														name="correo" placeholder="Correo Electronico">
+												</div>
+												<div
+													class="ccol-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+													<label for="formFileMultiple" class="form-label">Estado*</label>
+													<select id="estadoRegistro" name="estadoRegistro"
+														class="form-control">
+														<option>1</option>
+														<option>2</option>
+													</select>
+												</div>
+												<div
+													class="ccol-md-9 col-sm-9 col-xs-12 form-group has-feedback">
+													<label for="formFileMultiple" class="form-label">Seleccione
+														una Imagen*</label> <input class="form-control" type="file"
+														id="archivoImg" name="archivoImg" />
+												</div>
+
+												<div class="form-group">
+													<div>
+														<button id="" type="submit" class="btn btn-success">
+															<li class="fa fa-edit m-right-xs"></i>Actualizar Foto
+														</button>
+													</div>
+												</div>
+												<div class="clearfix"></div>
+											</form>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-danger"
+												data-dismiss="modal">Cerrar</button>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--fin del modal -->
+					</div>
+				</div>
+				<!-- /page content -->
+
+
+			</div>
+			<div th:insert="/fragments/footer :: footer"></div>
+		</div>
+
+		<div th:insert="/fragments/jQuery :: jQuery"></div>
+</body>
+</html>

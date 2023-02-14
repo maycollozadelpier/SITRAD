@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="/fragments/header :: header">
+<!-- <head th:insert="/layout/layout :: header"></head> -->
+</head>
+
+
+
+
+
+<body class="nav-md" onload="listarnucleos();">
+	<div class="container body">
+		<div class="main_container">
+						<div th:insert="/fragments/natLeft :: left-nav"></div>
+<!-- 			<div th:replace="/layout/layout :: left-nav"></div> -->
+			<div th:insert="/fragments/topNav :: top-nav"></div>
+
+			<!-- page content -->
+			<div class="right_col" role="main">
+				<div class="">
+
+					<div class="clearfix"></div>
+
+					<div class="row">
+
+						<div class="col-md-4 col-sm-4 col-xs-12">
+							<div class="x_panel">
+								<div class="x_title">
+									<h2>
+										Perfil usuario
+									</h2>
+									<ul class="nav navbar-right panel_toolbox">
+										<li><a class="collapse-link"><i
+												class="fa fa-chevron-up"></i></a></li>
+										<li><a class="close-link"><i class="fa fa-close"></i></a>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content">
+
+									<div class="col-md-12 col-sm-12 col-xs-12">
+										<div class="x_content">
+											<div class="row">
+												<div class="col-md-offset-2 col-md-12">
+													<div>
+														<div>
+															<img class="img-responsive avatar-view text-center"
+																th:src="@{/perfil/} +${grls.foto}" alt="Avatar"
+																title="Change the avatar"
+																style="width: 280px; border-radius: 50%">
+														</div>
+													</div>
+												</div>
+												<br> <br> <br> <br> <br> <br>
+												<div class="col-md-12">
+													<form class="form-horizontal" novalidate
+														th:action="@{/actualizar-foto}" method="POST"
+														enctype="multipart/form-data">
+														<input type="hidden" th:value="${grls.idPersona}"
+															name="personaId">
+														<div class="form-group has-feedback">
+															<label for="formFileMultiple" class="form-label">Seleccione
+																una Imagen*</label> <input class="form-control" type="file"
+																id="archivoImg" name="archivoImg" />
+														</div>
+
+														<button type="submit" class="btn btn-success btn-block">
+															<i class="fa fa-edit m-right-xs"></i> Editar Foto
+														</button>
+														<br />
+
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+
+						<div class="col-md-8 col-sm-8 col-xs-12">
+							<div class="x_panel">
+								<div class="x_title">
+									<h2>Datos Personales </h2>
+
+
+									<ul class="nav navbar-right panel_toolbox">
+										<li><a class="collapse-link"><i
+												class="fa fa-chevron-up"></i></a></li>
+										<li><a class="close-link"><i class="fa fa-close"></i></a></li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content">
+									<br></br>
+										<div
+											class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+											<h2 class="form-label">GRADO:</h2>
+										</div>
+										<div
+											class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+											<h3 th:text="${grls.acronimoGradoD}"></h3>
+										</div>
+										<div class="clearfix"></div>
+										<div
+											class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+											<h2 class="form-label">ARMA:</h2>
+										</div>
+										<div
+											class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+											<h3 th:text="${grls.acronimoArmaD}"></h3>
+										</div>
+										<div class="clearfix"></div>
+										<div
+											class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+											<h2 class="form-label">NOMBRES:</h2>
+										</div>
+										<div
+											class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+											<h3 th:text="${grls.nombre}"></h3>
+										</div>
+
+										<div class="clearfix"></div>
+										<div
+											class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+											<h2 class="form-label">CORREO:</h2>
+										</div>
+										<div
+											class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+											<h3 th:text="${grls.email}"></h3>
+										</div>
+										<div class="clearfix"></div>
+										<div
+											class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+											<h2 class="form-label">DNI:</h2>
+										</div>
+										<div
+											class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+											<h3 th:text="${grls.dni}"></h3>
+										</div>
+										<div class="clearfix"></div>
+										<div
+											class="col-md-3 col-sm-3 col-xs-12 form-group has-feedback">
+											<h2 class="form-label">DEPENDENCIA:</h2>
+										</div>
+										<div
+											class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+											<h3
+												th:text="${grls.acronimoNucleo} + '-' + ${grls.acronimoGGUU} + '-' +${grls.acronimoUnidad}"></h3>
+										</div>
+										<div class="clearfix"></div>
+									
+
+								</div>
+							</div>
+						</div>
+
+
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<!-- /page content -->
+		</div>
+
+	</div>
+
+
+
+	<div th:insert="/fragments/footer :: footer"></div>
+
+
+	<div th:insert="/fragments/jQuery :: jQuery"></div>
+
+	<script src="/assets/ajax/cargarselect.js"></script>
+
+</body>
+</html>

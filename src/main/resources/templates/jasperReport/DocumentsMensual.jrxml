@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DocumentsMensual" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4eedbb89-b4f6-4469-9ab6-f642a1688cf7">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MESA-PARTES"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#EEEFF0"/>
+		</conditionalStyle>
+	</style>
+	<style name="Table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<leftPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+			<rightPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#CACED0">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#D8D8D8"/>
+		</conditionalStyle>
+	</style>
+	<style name="Table 1_TH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_CH" mode="Opaque" backcolor="#E6F3FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="tableDataset" uuid="f13e6d36-5148-4ecc-bbe3-3035def80980">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
+	<subDataset name="Dataset1" uuid="96972be5-23ea-4535-b041-885c06123281">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MESA-PARTES"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT * FROM DETEL_LISTA_DOCUMENTOS]]>
+		</queryString>
+		<field name="VDESCRIPCION_DOC" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="VDESCRIPCION_DOC"/>
+			<property name="com.jaspersoft.studio.field.label" value="VDESCRIPCION_DOC"/>
+		</field>
+		<field name="VDESCRIPCION_CLASIFICACION" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="VDESCRIPCION_CLASIFICACION"/>
+			<property name="com.jaspersoft.studio.field.label" value="VDESCRIPCION_CLASIFICACION"/>
+		</field>
+		<field name="VNUMERO_DOCUMENTO" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="VNUMERO_DOCUMENTO"/>
+			<property name="com.jaspersoft.studio.field.label" value="VNUMERO_DOCUMENTO"/>
+		</field>
+		<field name="DFECHA_DOCUMENTO" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="DFECHA_DOCUMENTO"/>
+			<property name="com.jaspersoft.studio.field.label" value="DFECHA_DOCUMENTO"/>
+		</field>
+		<field name="DFECHA_REC_DOCUMENTO" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="DFECHA_REC_DOCUMENTO"/>
+			<property name="com.jaspersoft.studio.field.label" value="DFECHA_REC_DOCUMENTO"/>
+		</field>
+		<field name="NN_REMITE" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="NN_REMITE"/>
+			<property name="com.jaspersoft.studio.field.label" value="NN_REMITE"/>
+		</field>
+	</subDataset>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM DETEL_LISTA_DOCUMENTOS]]>
+	</queryString>
+	<field name="NID_DOCUMENTO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="NID_DOCUMENTO"/>
+		<property name="com.jaspersoft.studio.field.label" value="NID_DOCUMENTO"/>
+	</field>
+	<field name="VANIO_DOCUMENTO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VANIO_DOCUMENTO"/>
+		<property name="com.jaspersoft.studio.field.label" value="VANIO_DOCUMENTO"/>
+	</field>
+	<field name="VNUMERO_DOCUMENTO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VNUMERO_DOCUMENTO"/>
+		<property name="com.jaspersoft.studio.field.label" value="VNUMERO_DOCUMENTO"/>
+	</field>
+	<field name="VTIPO_ORGANIZACION" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VTIPO_ORGANIZACION"/>
+		<property name="com.jaspersoft.studio.field.label" value="VTIPO_ORGANIZACION"/>
+	</field>
+	<field name="VID_TIPO_DOC" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VID_TIPO_DOC"/>
+		<property name="com.jaspersoft.studio.field.label" value="VID_TIPO_DOC"/>
+	</field>
+	<field name="VDESCRIPCION_DOC" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VDESCRIPCION_DOC"/>
+		<property name="com.jaspersoft.studio.field.label" value="VDESCRIPCION_DOC"/>
+	</field>
+	<field name="NID_TIPO_CLASIFICACION" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NID_TIPO_CLASIFICACION"/>
+		<property name="com.jaspersoft.studio.field.label" value="NID_TIPO_CLASIFICACION"/>
+	</field>
+	<field name="VDESCRIPCION_CLASIFICACION" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VDESCRIPCION_CLASIFICACION"/>
+		<property name="com.jaspersoft.studio.field.label" value="VDESCRIPCION_CLASIFICACION"/>
+	</field>
+	<field name="VID_TIPO_ESTADO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VID_TIPO_ESTADO"/>
+		<property name="com.jaspersoft.studio.field.label" value="VID_TIPO_ESTADO"/>
+	</field>
+	<field name="VDESCRIPCION_ESTADO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VDESCRIPCION_ESTADO"/>
+		<property name="com.jaspersoft.studio.field.label" value="VDESCRIPCION_ESTADO"/>
+	</field>
+	<field name="VASUNTO_DOCUMENTO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VASUNTO_DOCUMENTO"/>
+		<property name="com.jaspersoft.studio.field.label" value="VASUNTO_DOCUMENTO"/>
+	</field>
+	<field name="VDESCRIPCION_DOCUMENTO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VDESCRIPCION_DOCUMENTO"/>
+		<property name="com.jaspersoft.studio.field.label" value="VDESCRIPCION_DOCUMENTO"/>
+	</field>
+	<field name="VREF_DOCUMENTO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VREF_DOCUMENTO"/>
+		<property name="com.jaspersoft.studio.field.label" value="VREF_DOCUMENTO"/>
+	</field>
+	<field name="NESTADO_REGISTRO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="NESTADO_REGISTRO"/>
+		<property name="com.jaspersoft.studio.field.label" value="NESTADO_REGISTRO"/>
+	</field>
+	<field name="DFECHA_DOCUMENTO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DFECHA_DOCUMENTO"/>
+		<property name="com.jaspersoft.studio.field.label" value="DFECHA_DOCUMENTO"/>
+	</field>
+	<field name="DFECHA_REC_DOCUMENTO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DFECHA_REC_DOCUMENTO"/>
+		<property name="com.jaspersoft.studio.field.label" value="DFECHA_REC_DOCUMENTO"/>
+	</field>
+	<field name="VRESPUESTA_DOCUMENTO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VRESPUESTA_DOCUMENTO"/>
+		<property name="com.jaspersoft.studio.field.label" value="VRESPUESTA_DOCUMENTO"/>
+	</field>
+	<field name="VDOC_ARCHIVO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VDOC_ARCHIVO"/>
+		<property name="com.jaspersoft.studio.field.label" value="VDOC_ARCHIVO"/>
+	</field>
+	<field name="VNUCLEO_CODIGO_REMIT" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VNUCLEO_CODIGO_REMIT"/>
+		<property name="com.jaspersoft.studio.field.label" value="VNUCLEO_CODIGO_REMIT"/>
+	</field>
+	<field name="NN_REMITE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NN_REMITE"/>
+		<property name="com.jaspersoft.studio.field.label" value="NN_REMITE"/>
+	</field>
+	<field name="VACTIVIDAD_CODIGO_REMIT" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VACTIVIDAD_CODIGO_REMIT"/>
+		<property name="com.jaspersoft.studio.field.label" value="VACTIVIDAD_CODIGO_REMIT"/>
+	</field>
+	<field name="GGUU_REMITE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="GGUU_REMITE"/>
+		<property name="com.jaspersoft.studio.field.label" value="GGUU_REMITE"/>
+	</field>
+	<field name="VUNIDAD_CODIGO_REMIT" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VUNIDAD_CODIGO_REMIT"/>
+		<property name="com.jaspersoft.studio.field.label" value="VUNIDAD_CODIGO_REMIT"/>
+	</field>
+	<field name="UU_REMITE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="UU_REMITE"/>
+		<property name="com.jaspersoft.studio.field.label" value="UU_REMITE"/>
+	</field>
+	<field name="VNUCLEO_CODIGO_RESP" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VNUCLEO_CODIGO_RESP"/>
+		<property name="com.jaspersoft.studio.field.label" value="VNUCLEO_CODIGO_RESP"/>
+	</field>
+	<field name="NN_RESP" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NN_RESP"/>
+		<property name="com.jaspersoft.studio.field.label" value="NN_RESP"/>
+	</field>
+	<field name="VACTIVIDAD_CODIGO_RESP" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VACTIVIDAD_CODIGO_RESP"/>
+		<property name="com.jaspersoft.studio.field.label" value="VACTIVIDAD_CODIGO_RESP"/>
+	</field>
+	<field name="GGUU_RESP" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="GGUU_RESP"/>
+		<property name="com.jaspersoft.studio.field.label" value="GGUU_RESP"/>
+	</field>
+	<field name="VUNIDAD_CODIGO_RESP" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VUNIDAD_CODIGO_RESP"/>
+		<property name="com.jaspersoft.studio.field.label" value="VUNIDAD_CODIGO_RESP"/>
+	</field>
+	<field name="UU_DESC_RESP" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="UU_DESC_RESP"/>
+		<property name="com.jaspersoft.studio.field.label" value="UU_DESC_RESP"/>
+	</field>
+	<field name="VUSUARIO_ACTUALIZACION" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VUSUARIO_ACTUALIZACION"/>
+		<property name="com.jaspersoft.studio.field.label" value="VUSUARIO_ACTUALIZACION"/>
+	</field>
+	<field name="VUSUARIO_ELIMINACION" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VUSUARIO_ELIMINACION"/>
+		<property name="com.jaspersoft.studio.field.label" value="VUSUARIO_ELIMINACION"/>
+	</field>
+	<field name="VUSUARIO_REGISTRO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="VUSUARIO_REGISTRO"/>
+		<property name="com.jaspersoft.studio.field.label" value="VUSUARIO_REGISTRO"/>
+	</field>
+	<group name="Gruppo1">
+		<groupExpression><![CDATA[$F{NID_DOCUMENTO}]]></groupExpression>
+		<groupFooter>
+			<band>
+				<property name="local_mesure_unitheight" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="VANIO_DOCUMENTO">
+		<groupExpression><![CDATA[$F{VANIO_DOCUMENTO}]]></groupExpression>
+	</group>
+	<group name="VNUMERO_DOCUMENTO">
+		<groupExpression><![CDATA[$F{VNUMERO_DOCUMENTO}]]></groupExpression>
+	</group>
+	<group name="VTIPO_ORGANIZACION">
+		<groupExpression><![CDATA[$F{VTIPO_ORGANIZACION}]]></groupExpression>
+	</group>
+	<group name="VID_TIPO_DOC">
+		<groupExpression><![CDATA[$F{VID_TIPO_DOC}]]></groupExpression>
+	</group>
+	<group name="VDESCRIPCION_DOC">
+		<groupExpression><![CDATA[$F{VDESCRIPCION_DOC}]]></groupExpression>
+	</group>
+	<group name="NID_TIPO_CLASIFICACION">
+		<groupExpression><![CDATA[$F{NID_TIPO_CLASIFICACION}]]></groupExpression>
+	</group>
+	<group name="VDESCRIPCION_CLASIFICACION">
+		<groupExpression><![CDATA[$F{VDESCRIPCION_CLASIFICACION}]]></groupExpression>
+	</group>
+	<group name="VID_TIPO_ESTADO">
+		<groupExpression><![CDATA[$F{VID_TIPO_ESTADO}]]></groupExpression>
+	</group>
+	<group name="VDESCRIPCION_ESTADO">
+		<groupExpression><![CDATA[$F{VDESCRIPCION_ESTADO}]]></groupExpression>
+	</group>
+	<group name="VASUNTO_DOCUMENTO">
+		<groupExpression><![CDATA[$F{VASUNTO_DOCUMENTO}]]></groupExpression>
+	</group>
+	<group name="VDESCRIPCION_DOCUMENTO">
+		<groupExpression><![CDATA[$F{VDESCRIPCION_DOCUMENTO}]]></groupExpression>
+	</group>
+	<group name="VREF_DOCUMENTO">
+		<groupExpression><![CDATA[$F{VREF_DOCUMENTO}]]></groupExpression>
+	</group>
+	<group name="NESTADO_REGISTRO">
+		<groupExpression><![CDATA[$F{NESTADO_REGISTRO}]]></groupExpression>
+	</group>
+	<group name="DFECHA_DOCUMENTO">
+		<groupExpression><![CDATA[$F{DFECHA_DOCUMENTO}]]></groupExpression>
+	</group>
+	<group name="DFECHA_REC_DOCUMENTO">
+		<groupExpression><![CDATA[$F{DFECHA_REC_DOCUMENTO}]]></groupExpression>
+	</group>
+	<group name="VRESPUESTA_DOCUMENTO">
+		<groupExpression><![CDATA[$F{VRESPUESTA_DOCUMENTO}]]></groupExpression>
+	</group>
+	<group name="VDOC_ARCHIVO">
+		<groupExpression><![CDATA[$F{VDOC_ARCHIVO}]]></groupExpression>
+	</group>
+	<group name="VNUCLEO_CODIGO_REMIT">
+		<groupExpression><![CDATA[$F{VNUCLEO_CODIGO_REMIT}]]></groupExpression>
+	</group>
+	<group name="NN_REMITE">
+		<groupExpression><![CDATA[$F{NN_REMITE}]]></groupExpression>
+	</group>
+	<group name="VACTIVIDAD_CODIGO_REMIT">
+		<groupExpression><![CDATA[$F{VACTIVIDAD_CODIGO_REMIT}]]></groupExpression>
+	</group>
+	<group name="GGUU_REMITE">
+		<groupExpression><![CDATA[$F{GGUU_REMITE}]]></groupExpression>
+	</group>
+	<group name="VUNIDAD_CODIGO_REMIT">
+		<groupExpression><![CDATA[$F{VUNIDAD_CODIGO_REMIT}]]></groupExpression>
+	</group>
+	<group name="UU_REMITE">
+		<groupExpression><![CDATA[$F{UU_REMITE}]]></groupExpression>
+	</group>
+	<group name="VNUCLEO_CODIGO_RESP">
+		<groupExpression><![CDATA[$F{VNUCLEO_CODIGO_RESP}]]></groupExpression>
+	</group>
+	<group name="NN_RESP">
+		<groupExpression><![CDATA[$F{NN_RESP}]]></groupExpression>
+	</group>
+	<group name="VACTIVIDAD_CODIGO_RESP">
+		<groupExpression><![CDATA[$F{VACTIVIDAD_CODIGO_RESP}]]></groupExpression>
+	</group>
+	<group name="GGUU_RESP">
+		<groupExpression><![CDATA[$F{GGUU_RESP}]]></groupExpression>
+	</group>
+	<group name="VUNIDAD_CODIGO_RESP">
+		<groupExpression><![CDATA[$F{VUNIDAD_CODIGO_RESP}]]></groupExpression>
+	</group>
+	<group name="UU_DESC_RESP">
+		<groupExpression><![CDATA[$F{UU_DESC_RESP}]]></groupExpression>
+	</group>
+	<group name="VUSUARIO_ACTUALIZACION">
+		<groupExpression><![CDATA[$F{VUSUARIO_ACTUALIZACION}]]></groupExpression>
+	</group>
+	<group name="VUSUARIO_ELIMINACION">
+		<groupExpression><![CDATA[$F{VUSUARIO_ELIMINACION}]]></groupExpression>
+	</group>
+	<group name="VUSUARIO_REGISTRO">
+		<groupExpression><![CDATA[$F{VUSUARIO_REGISTRO}]]></groupExpression>
+	</group>
+	<background>
+		<band height="600">
+			<image>
+				<reportElement x="42" y="190" width="474" height="410" uuid="823ac60f-8c2d-4b0b-bcac-dc050e6f62c6"/>
+				<imageExpression><![CDATA["C:/Users/jhlopezp/Pictures/COPERE.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="196" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="90" width="84" height="25" uuid="57aed2b1-4f4e-40a3-a6ad-54dae8dd4c5a">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bill to:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="115" width="120" height="15" uuid="33274f5d-5b7e-4be2-a2ff-65d452a618ed"/>
+				<text><![CDATA[ABC Company]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="80" width="556" height="1" uuid="806ce5df-1219-4876-ae0c-ca7405b1f246">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="130" width="120" height="15" uuid="1d3045ed-03d6-4253-a959-aeeb491b73ca"/>
+				<text><![CDATA[Company Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="145" width="120" height="15" uuid="235bf8b6-1e1e-49c7-b59f-7a46c30b8209"/>
+				<text><![CDATA[Company state1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="160" width="120" height="15" uuid="665f25c2-8663-4951-b699-1ab863bdeb76"/>
+				<text><![CDATA[Company state 2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="145" width="120" height="15" uuid="b62092ec-9053-4f27-b387-9b25d2909a68"/>
+				<text><![CDATA[Ship state1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="115" width="120" height="15" uuid="edbd74ac-0cbd-44c9-8a8e-ccf745191172"/>
+				<text><![CDATA[Ship name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="90" width="84" height="25" uuid="139ebe8d-25b0-411e-986c-270015400874">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ship to:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="160" width="120" height="15" uuid="dd52166a-1135-4931-adef-51e7972118bc"/>
+				<text><![CDATA[Ship state 2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="130" width="120" height="15" uuid="2d2f365d-7b12-4a8f-990d-ff528a2660bc"/>
+				<text><![CDATA[Ship Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="415" y="10" width="50" height="20" uuid="0f86baff-6386-4f3f-b3fe-2388707babe8"/>
+				<box rightPadding="4"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="465" y="10" width="84" height="20" uuid="bb10dbe1-0a4f-4722-9953-c163b63cf979"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="465" y="30" width="84" height="20" uuid="3836ce65-eca3-4cad-a6de-b1818def0a2b"/>
+				<textFieldExpression><![CDATA["INV0001"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="415" y="30" width="50" height="20" uuid="0b3f9342-da78-4cfa-9fc5-2301c4749678"/>
+				<box rightPadding="4"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Invoice #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="0" width="210" height="25" uuid="e622555d-198b-4ccd-a4a1-c59c53304058">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="19" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE MENSUAL DE DOCUMENTOS RECIBIDOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="55" width="205" height="15" uuid="b8cc42fd-b569-497d-834d-7e854040ad18"/>
+				<text><![CDATA[Phone number, web address, ecc.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="25" width="205" height="15" uuid="c226e44d-3bb5-4145-b0b3-903bf1d79fde"/>
+				<text><![CDATA[Street address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="40" width="205" height="15" uuid="b96f7183-44f8-43ad-ba60-43d8fbf50b6e"/>
+				<text><![CDATA[City, street, ZIP code]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="70" height="80" uuid="7ac441e4-589f-44d6-a826-6e509d526189"/>
+				<imageExpression><![CDATA["C:/Users/jhlopezp/Pictures/ejercito.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="284">
+			<componentElement>
+				<reportElement x="3" y="0" width="550" height="120" uuid="6da1b23a-54d7-49b9-a1c3-d8f12bcecbed">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table 1_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table 1_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table 1_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Dataset1" uuid="265e0fbb-495a-4c13-bdc7-79edd6ba5b33">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="120" uuid="996c8ca7-3e3f-4723-b67a-fd5d494ed7f4">
+						<jr:tableHeader style="Table 1_TH" height="30"/>
+						<jr:tableFooter style="Table 1_TH" height="30"/>
+						<jr:columnHeader style="Table 1_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="120" height="30" uuid="dac96abe-13ff-4670-9b7e-ca055c11b039"/>
+								<text><![CDATA[VDESCRIPCION_CLASIFICACION]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table 1_CH" height="30"/>
+						<jr:detailCell style="Table 1_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="120" height="30" uuid="5ce2495c-7510-48ec-b1e3-76b14f27c5db"/>
+								<textFieldExpression><![CDATA[$F{VDESCRIPCION_CLASIFICACION}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="49" uuid="6ca26417-dc3e-4cb7-a403-8f4063a55bcc">
+						<jr:tableHeader style="Table 1_TH" height="30"/>
+						<jr:tableFooter style="Table 1_TH" height="30"/>
+						<jr:columnHeader style="Table 1_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="49" height="30" uuid="99beca7f-6240-4659-a376-179dbca75152"/>
+								<text><![CDATA[VNUMERO_DOCUMENTO]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table 1_CH" height="30"/>
+						<jr:detailCell style="Table 1_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="49" height="30" uuid="cdaf66c1-0bd3-439f-9912-4a246a8f47db"/>
+								<textFieldExpression><![CDATA[$F{VNUMERO_DOCUMENTO}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="99" uuid="cb5b1c4a-9257-4ca4-8ae4-20857c4c6a5b">
+						<jr:tableHeader style="Table 1_TH" height="30"/>
+						<jr:tableFooter style="Table 1_TH" height="30"/>
+						<jr:columnHeader style="Table 1_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="99" height="30" uuid="07b0291d-3fad-4f6c-8e94-130eeee81c4a"/>
+								<text><![CDATA[DFECHA_DOCUMENTO]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table 1_CH" height="30"/>
+						<jr:detailCell style="Table 1_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="99" height="30" uuid="82c049ae-1a66-4dc0-9897-df3a29603dee"/>
+								<textFieldExpression><![CDATA[$F{DFECHA_DOCUMENTO}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="99" uuid="aa6b3b57-8f13-4512-a799-db7dbc3ff210">
+						<jr:tableHeader style="Table 1_TH" height="30"/>
+						<jr:tableFooter style="Table 1_TH" height="30"/>
+						<jr:columnHeader style="Table 1_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="99" height="30" uuid="b0ea70b8-e7e1-48f5-ba95-37564b3c6df5"/>
+								<text><![CDATA[DFECHA_REC_DOCUMENTO]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table 1_CH" height="30"/>
+						<jr:detailCell style="Table 1_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="99" height="30" uuid="133e6b9a-3950-4b6d-b0c7-eac2ef6dd6f0"/>
+								<textFieldExpression><![CDATA[$F{DFECHA_REC_DOCUMENTO}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="84" uuid="7a005691-9424-4f13-ad8a-1ba7d1b5b791">
+						<jr:tableHeader style="Table 1_TH" height="30"/>
+						<jr:tableFooter style="Table 1_TH" height="30"/>
+						<jr:columnHeader style="Table 1_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="84" height="30" uuid="1df9a68e-16d9-47eb-9824-9967833cdbe0"/>
+								<text><![CDATA[NN_REMITE]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table 1_CH" height="30"/>
+						<jr:detailCell style="Table 1_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="84" height="30" uuid="64e20318-d29d-486b-b5d1-ed23d1292924"/>
+								<textFieldExpression><![CDATA[$F{NN_REMITE}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="99" uuid="ebad5a7e-90de-4f20-ab64-025eadb20aa1">
+						<jr:tableHeader style="Table 1_TH" height="30"/>
+						<jr:tableFooter style="Table 1_TH" height="30"/>
+						<jr:columnHeader style="Table 1_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="99" height="30" uuid="d1fde4da-a72d-4895-91a4-9dc5f02e950f"/>
+								<text><![CDATA[VDESCRIPCION_DOC]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table 1_CH" height="30"/>
+						<jr:detailCell style="Table 1_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="99" height="30" uuid="d982edb1-d7c7-4c65-a179-003c3187514a"/>
+								<textFieldExpression><![CDATA[$F{VDESCRIPCION_DOC}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="101">
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="-2" y="0" width="556" height="100" backcolor="#E6E8E9" uuid="36aa233d-4305-48e6-974a-1bbf89bb3c8f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="31" width="59" height="20" uuid="d929545a-5e43-48c6-844f-7984e7790406"/>
+				<text><![CDATA[Usuario:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="0" width="110" height="30" uuid="1412459b-f018-4191-b26e-faf13ad3756b">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Responsable:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="51" width="59" height="20" uuid="4810249e-b392-4cda-a65c-367d6cb0d4a6"/>
+				<text><![CDATA[Direccion IP:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="71" width="59" height="20" uuid="54e6a95b-f410-4f5b-81aa-2c42cc57620e"/>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="76" y="71" width="84" height="20" uuid="e4c7626b-154b-41e4-975a-9ffb9123fc9f"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="450" y="36" width="40" height="30" uuid="1b2cb095-7899-452b-9f54-0bc365f4b2e3"/>
+				<text><![CDATA[Pagina:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="500" y="36" width="54" height="30" uuid="11615995-c874-4080-93a0-8d73bc99f2f3"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
